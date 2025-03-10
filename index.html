@@ -12,6 +12,12 @@
 
 <body>
     <main class="main-content">
+        
+        <div class="buttons__nav__menu">
+            <button class="button__nav__menu__inicio" onclick="location.href='index.html'">Início</button>
+            <button class="button__nav__menu__sobre" onclick="location.href='about.html'">Sobre</button>
+        </div>
+
         <header class="header-banner">
             <h1 class="main-title">Amigo Secreto</h1>
             <img src="assets/amigo-secreto.png" alt="Imagem representativa de amigo secreto">
@@ -33,6 +39,7 @@
                     Sortear amigo
                 </button>
             </div>
+            
             <div class="button-container">
                 <button class="button-draw" onclick="resetDraw()" aria-label="Finalizar">
                     <img src="assets/play_circle_outline.png" alt="Ícone para sortear">
@@ -40,6 +47,12 @@
                 </button>
             </div>
         </section>
+
+        <footer class="rodape">
+            <p><a href="https://github.com/inatagan"> Criado com 💻 e ☕ por: inatagan</a></p>
+            <p>&copy; 2025 Amigo Secreto Alura + ONE G8</p>
+        </footer>
+
     </main>
 
     <script src="app.js" defer></script>
