@@ -1,6 +1,6 @@
 //O principal objetivo deste desafio é fortalecer suas habilidades em lógica de programação. Aqui você deverá desenvolver a lógica para resolver o problema.
 // lista de amigos.
-const friendsList = [];
+let friendsList = [];
 // o primeiro nome inserido é considerado como o nome do usuário.
 let userName;
 
@@ -53,17 +53,25 @@ function updateListUI() {
  * caso isso ocorra, utilizando de uma recursao a funcao realiza um novo sorteio.
  */
 function drawFriend() {
-    if (friendsList.length === 0) {
-        return undefined;
-    }
     const randomIndex = Math.floor(Math.random() * friendsList.length);
     const result = friendsList[randomIndex];
-    if (!(result === userName)) {
-        document.getElementById("resultado").innerHTML = `Seu amigo secreto é: ${friendsList[randomIndex]}`;
+    const alreadyPopped = [];
+    if (friendsList.length === 0) {
+        alert("Todos os nomes ja foram sorteados")
+    } else if (friendsList.length > 1) {
+        if (!(result === userName) && !(alreadyPopped.includes(result))) {
+            document.getElementById("resultado").innerHTML = `Seu amigo secreto é: ${result}`;
+            alreadyPopped.push(result);
+            friendsList = friendsList.filter(item => item !== result);
+        }
+        else {
+            drawFriend();
+        }
+    } else {
+        document.getElementById("resultado").innerHTML = `Seu amigo secreto é: ${friendsList[0]}`;
+        friendsList.pop(friendsList[0]);        
     }
-    else {
-        drawFriend();
-    }
+    updateListUI();
 }
 
 // funcao para encerrar o sorteio e reiniciar as funcoes da pagina.
